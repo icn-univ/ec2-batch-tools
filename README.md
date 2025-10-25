@@ -30,7 +30,7 @@ AWS_REGION="us-west-2"       # AWS region
 
 ### create_ec2_instances_with_eip.sh
 
-Creates multiple EC2 instances with Elastic IPs.
+Creates multiple EC2 instances with Elastic IPs. Instance names are assigned as EC2_NAME + sequential number (e.g., scipion1, scipion2, scipion3, ...).
 
 ```bash
 ./create_ec2_instances_with_eip.sh
