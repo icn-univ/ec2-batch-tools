@@ -84,6 +84,28 @@ SSH_KEY_PATH="./your-key.pem"             # Path to SSH key file
 ./ebs-disk-warm-up.sh
 ```
 
+**Important: Device Name Configuration**
+
+The script uses `/dev/nvme0n1` as the default device name for EBS volumes. If your instances use different device names:
+
+1. Check the device name on your instance:
+   ```bash
+   lsblk
+   ```
+
+2. Edit the script and modify the `--filename` parameter in the `fio` command:
+   ```bash
+   # Change this line in the script:
+   sudo fio --filename=/dev/nvme0n1 --rw=read --bs=1M ...
+   
+   # To match your device name, for example:
+   sudo fio --filename=/dev/xvda --rw=read --bs=1M ...
+   ```
+
+Common device names:
+- NVMe instances: `/dev/nvme0n1`, `/dev/nvme1n1`
+- Older instance types: `/dev/xvda`, `/dev/sda1`
+
 **For long-running operations (50+ hours):**
 
 Use `screen` to prevent session timeout:
