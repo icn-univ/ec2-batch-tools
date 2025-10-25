@@ -4,11 +4,11 @@ Bash scripts for batch operations on AWS EC2 instances - start, stop, list, chan
 
 ## Features
 
+- **Create EC2 Instances** - Batch create instances with Elastic IPs
 - **List EC2 Instances** - Export instance information to CSV
 - **Start/Stop Instances** - Bulk start or stop multiple instances
 - **Change Instance Type** - Modify instance types for multiple instances at once
 - **EBS Disk Warm-up** - Initialize EBS volumes restored from snapshots
-- **Create EC2 Instances** - Batch create instances with Elastic IPs
 
 ## Prerequisites
 
@@ -22,11 +22,19 @@ Bash scripts for batch operations on AWS EC2 instances - start, stop, list, chan
 Each script uses the following common variables that you should modify:
 
 ```bash
-EC2_NAME="test"              # EC2 instance name prefix to filter
+EC2_NAME="scipion"           # EC2 instance name prefix to filter
 AWS_REGION="us-west-2"       # AWS region
 ```
 
 ## Scripts
+
+### create_ec2_instances_with_eip.sh
+
+Creates multiple EC2 instances with Elastic IPs.
+
+```bash
+./create_ec2_instances_with_eip.sh
+```
 
 ### list_ec2_instances.sh
 
@@ -125,14 +133,6 @@ screen -S warmup
 ```
 
 Output: `completed_servers.txt` tracks finished instances
-
-### create_ec2_instances_with_eip.sh
-
-Creates multiple EC2 instances with Elastic IPs.
-
-```bash
-./create_ec2_instances_with_eip.sh
-```
 
 ## Security Notes
 
